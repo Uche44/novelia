@@ -1,7 +1,4 @@
-"""
-Django settings for novelia_project.
-Production-ready configuration with environment variables.
-"""
+
 
 from pathlib import Path
 import os
@@ -21,6 +18,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv(
 
 # Application definition
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -35,7 +33,7 @@ INSTALLED_APPS = [
     
     # Local apps
     'books',
-    'accounts',
+    
 ]
 
 MIDDLEWARE = [
@@ -49,6 +47,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTH_USER_MODEL = 'accounts.User'
+
 
 ROOT_URLCONF = 'novelia_project.urls'
 

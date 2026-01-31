@@ -1,0 +1,365 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    /* background-color: #f0f0f0; */
+    /* height: 100%; */
+    /* min-height: 100vh; */
+    /* width: 100%; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* padding: 20px; */
+    /* padding-bottom: 65px; */
+    /* margin-bottom: 65px; */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 20px; */
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+    height: 120vh;
+    background-image: linear-gradient(rgba(189, 189, 189, 0.178), rgba(148, 148, 148, 0.171)), url(/MEDIA/Line\ \ White\ Background\ \ Business\ Wallpaper\ Image\ For\ Free\ Download\ -\ Pngtree.jpg  );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.main{
+    /* width: 100%;
+    height: 110vh;
+    background-image: linear-gradient(rgba(189, 189, 189, 0.178), rgba(148, 148, 148, 0.171)), url(/Line\ \ White\ Background\ \ Business\ Wallpaper\ Image\ For\ Free\ Download\ -\ Pngtree.jpg );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; */
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1010px;
+    height: 100%;
+    max-height: 800px;
+    /* background: rgba(20, 20, 40, 0.7); */
+    /* backdrop-filter: blur(20px); */
+    /* border-radius: 30px; */
+    /* border: 1px solid rgba(0, 209, 209, 0.2); */
+    /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); */
+    /* overflow: hidden; */
+}
+.logo .atag{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 6px;
+    
+}
+.logo a{
+    text-decoration: none;
+}
+.logo{
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    align-items: center;
+    padding: 20px 0px 0px 20px;
+            filter: drop-shadow(0 0 10px rgba(0, 209, 209, 0.5));
+
+}
+.logo div{
+    /* color: rgb(0, 255, 255); */
+    /* font-size: 32px; */
+    height: 40px;
+    width: 40px;
+}
+.logo h1{
+    color: rgb(0, 209, 209);
+    font-size: 25px;
+    font-weight: 100;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 2px;
+}
+.container{
+    /* max-width: 400px; */
+    /* background-color: #ebebeb; */
+    /* padding: 20px; */
+    /* border-radius: 20px; */
+    overflow: hidden;
+    /* box-shadow: 0 8px 30px rgba(26, 26, 26, 0.089); */
+    /* margin: 65px 65px 0px 65px; */
+    /* margin: 0px 60px; */
+    display: flex;
+    height: 90%;
+    position: relative;
+    top: 0px;
+}
+.first-cont{
+    width: 50%;
+    /* background-color: #18c7c7; */
+
+    /* background-color: aqua; */
+    height: 100%;
+    padding-top: 100PX;
+    
+}
+.first-cont-head{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.first-cont-head h2{
+    font-size: 30px;
+    text-align: center;
+    color: #222222;
+
+}
+.feature-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: center; */
+    height: 100%;
+    width: 100%;
+    margin-bottom: 30px;
+    
+}
+.feature-icon{
+    width: 40px;
+    height: 40px;
+    background: rgba(82, 81, 81, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.feature-icon svg{
+    width: 20px;
+    height: 20px;
+}
+.feature-word{
+    margin-left: 15px;
+    /* margin-bottom: 40px; */
+
+    /* font-size: 18px; */
+    color: #333333;
+    /* font-weight: 500; */
+}
+.feature-word h4{
+    font-size: 18px;
+    /* font-weight: 700; */
+
+    /* margin-bottom: 5px; */
+}
+.feature-word p{
+    font-size: 14px;
+    margin-top: 5px;
+    color: #555555;
+    line-height: 1.4;
+    font-weight: 100;
+}
+.second-cont{
+    width: 50%;
+    /* background-color: lightgray; */
+    box-shadow: 0 8px 30px rgba(26, 26, 26, 0.089);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.089);
+    height: 100%;
+    border-radius: 10px;
+    padding: 20px 35px;
+}
+.sign-up-contents{
+    margin-top: 30px;
+    height: 100%;
+    overflow-y: auto;
+    width: 100%;
+
+}
+.name{
+    display: flex;
+    gap: 15px;
+}
+.email{
+    display: flex;
+    flex-direction: column;
+}
+.mobile-num{
+    display: flex;
+    flex-direction: column;
+}
+.place{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+}
+.state {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.passwords{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+input{
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #a8a7a7;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    background: none;
+}
+select{
+    padding: 10px 30px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    background: none;
+}
+.state select option{
+    background: white;
+}
+input:focus{
+    background: whitesmoke;
+    border-color: #18c7c7;
+    box-shadow: 0 0 5px rgba(24, 199, 199, 0.5);
+}
+.checkbox-cont {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* margin: 10px 0; */
+    /* margin-top: 10px; */
+}
+
+.checkbox-cont input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: rgb(0, 209, 209);
+    
+}
+
+.checkbox-cont label {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    margin: 0;
+}
+
+.checkbox-cont a {
+    color: #1dc5c5;
+    text-decoration: none;
+}
+
+.checkbox-cont a:hover {
+    text-decoration: underline;
+}
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: #1dc5c5;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); */
+    /* transition: left 0.5s; */
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.submit-btn:hover {
+    /* transform: translateY(-2px); */
+    /* box-shadow: 0 10px 30px rgba(0, 209, 209, 0.4); */
+    background-color: #27b4b4be;
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    background: rgba(255, 255, 255, 0.2);
+    cursor: not-allowed;
+    transform: none;
+}
+        .signup-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.267);
+        }
+
+        .signup-footer p {
+            color: rgba(0, 0, 0, 0.7);
+            font-size: 14px;
+            font-weight: 400;
+            
+        }
+
+        .signup-footer a {
+            color: #1dc5c5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .signup-footer a:hover {
+            text-decoration: underline;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 320px) and (max-width:768px) {
+    .first-cont{
+        display: none;
+    }
+    .second-cont{
+        width: 100%;
+    }
+}

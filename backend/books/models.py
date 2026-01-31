@@ -1,0 +1,19 @@
+from django.db import models
+
+
+class Book(models.Model):
+    """Model for Nigerian books in the catalog"""
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=200)
+    genre = models.CharField(max_length=100)
+    description = models.TextField()
+    cover_image = models.ImageField(upload_to='books/covers/', blank=True, null=True)
+    pdf_file = models.FileField(upload_to='books/pdfs/', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"{self.title} by {self.author}"
+    
+    class Meta:
+        ordering = ['title']

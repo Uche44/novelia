@@ -1,0 +1,244 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body{
+    /* background-color: #f0f0f0; */
+    /* height: 100%; */
+    /* min-height: 100vh; */
+    /* width: 100%; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* padding: 20px; */
+    /* padding-bottom: 65px; */
+    /* margin-bottom: 65px; */
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 20px; */
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(189, 189, 189, 0.178), rgba(148, 148, 148, 0.171)), url(/MEDIA/Line\ \ White\ Background\ \ Business\ Wallpaper\ Image\ For\ Free\ Download\ -\ Pngtree.jpg );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.main{
+    /* width: 100%;
+    height: 110vh;
+    background-image: linear-gradient(rgba(189, 189, 189, 0.178), rgba(148, 148, 148, 0.171)), url(/Line\ \ White\ Background\ \ Business\ Wallpaper\ Image\ For\ Free\ Download\ -\ Pngtree.jpg );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; */
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1010px;
+    height: 100%;
+    max-height: 800px;
+    /* background: rgba(20, 20, 40, 0.7); */
+    /* backdrop-filter: blur(20px); */
+    /* border-radius: 30px; */
+    /* border: 1px solid rgba(0, 209, 209, 0.2); */
+    /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); */
+    /* overflow: hidden; */
+}
+.container{
+    /* max-width: 400px; */
+    /* background-color: #ebebeb; */
+    /* padding: 20px; */
+    /* border-radius: 20px; */
+    overflow: hidden;
+    /* box-shadow: 0 8px 30px rgba(26, 26, 26, 0.089); */
+    /* margin: 65px 65px 0px 65px; */
+    /* margin: 0px 60px; */
+    display: flex;
+    height: 90%;
+    position: relative;
+    top: 30px;
+}
+.second-cont{
+    /* width: 50%; */
+    width: 50%;
+    /* background-color: lightgray; */
+    box-shadow: 0 8px 30px rgba(26, 26, 26, 0.089);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.089);
+    height: 100%;
+    border-radius: 10px;
+    padding: 20px 35px;
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    left: 25%;
+    top: 0px;
+
+}
+
+/* form styles */
+.second-cont-head h2{
+    margin:0 0 8px;
+    font-size: 30PX;
+    color:#000000
+}
+.second-cont-head p{
+    margin:0 0 12px;
+    color:#475569
+}
+.login-contents{
+    width:100%;
+    display:flex;
+    justify-content:center
+}
+.login-contents form{
+    width:100%;
+    max-width:420px
+}
+.login-contents label{
+    display:block;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 10PX;
+}
+.login-contents input{
+    width:100%;
+    padding:10px 12px;
+    margin-bottom:14px;
+    border:1px solid rgba(38,38,46,0.08);
+    border-radius:6px;
+    font-size:0.95rem;
+    background: none;
+    outline:none;
+    
+}
+.login-contents input:focus{
+    background: whitesmoke;
+    border-color: #18c7c7;
+    box-shadow: 0 0 5px rgba(24, 199, 199, 0.5);
+}
+
+.reme{
+    margin-right:8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+.reme input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    accent-color: rgb(0, 209, 209);
+    
+}
+.reme input{
+    width: auto;
+    margin-bottom: 0;
+}
+.reme label{
+    margin: 0;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+    user-select: none;
+}
+.options{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+    width:100%;
+
+}
+.options .forgot{
+    color: #1dc5c5;
+    text-decoration:none;
+    font-weight: 500;
+    /* background-color: #000000; */
+
+}
+.submit-btn{
+    width: 100%;
+    padding: 16px;
+    background-color: #1dc5c5;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); */
+    /* transition: left 0.5s; */
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.submit-btn:hover {
+    /* transform: translateY(-2px); */
+    /* box-shadow: 0 10px 30px rgba(0, 209, 209, 0.4); */
+    background-color: #27b4b4be;
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    background: rgba(255, 255, 255, 0.2);
+    cursor: not-allowed;
+    transform: none;
+}
+.signup-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.527);
+}
+
+.signup-footer p {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 14px;
+    font-weight: 400;
+    
+}
+
+.signup-footer a {
+
+    color: #1dc5c5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-footer a:hover {
+    text-decoration: underline;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+.alt{margin-top:14px;color:#475569}
+.alt a{color:#0ea5a5;text-decoration:none;font-weight:700}
+@media (max-width:900px){.second-cont{width:100%;left:0;padding:24px}}

@@ -1,5 +1,7 @@
 // Homepage - Load books from Django API
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+// Use API URL from config.js
+const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
+const MEDIA_BASE_URL = window.API_CONFIG?.MEDIA_BASE_URL || 'http://127.0.0.1:8000';
 
 // Fetch and display books on homepage
 async function loadHomepageBooks() {
@@ -43,9 +45,9 @@ function displayHomepageBooks(books) {
             if (book.cover_image.startsWith('http')) {
                 imageUrl = book.cover_image;
             } else if (book.cover_image.startsWith('/media/')) {
-                imageUrl = `http://127.0.0.1:8000${book.cover_image}`;
+                imageUrl = `${MEDIA_BASE_URL}${book.cover_image}`;
             } else {
-                imageUrl = `http://127.0.0.1:8000/media/${book.cover_image}`;
+                imageUrl = `${MEDIA_BASE_URL}/media/${book.cover_image}`;
             }
         } else {
             // SVG placeholder

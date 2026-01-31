@@ -3,7 +3,8 @@
 // Handles user attendance for events with authentication checks
 
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+// Use API URL from config.js
+const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
 
 // Check if user is authenticated
 

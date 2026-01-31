@@ -1,5 +1,7 @@
 // API Configuration
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+// Use API URL from config.js
+const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
+const MEDIA_BASE_URL = window.API_CONFIG?.MEDIA_BASE_URL || 'http://127.0.0.1:8000';
 
 // Fetch and display books from API
 async function loadBooks(genre = '') {
@@ -42,10 +44,10 @@ function displayBooks(books) {
                 imageUrl = book.cover_image;
             } else if (book.cover_image.startsWith('/media/')) {
                 // Path already includes /media/ prefix
-                imageUrl = `http://127.0.0.1:8000${book.cover_image}`;
+                imageUrl = `${MEDIA_BASE_URL}${book.cover_image}`;
             } else {
                 // Relative path without /media/ prefix
-                imageUrl = `http://127.0.0.1:8000/media/${book.cover_image}`;
+                imageUrl = `${MEDIA_BASE_URL}/media/${book.cover_image}`;
             }
         } else {
             // SVG placeholder - no external file needed

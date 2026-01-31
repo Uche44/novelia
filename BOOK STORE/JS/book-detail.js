@@ -2,7 +2,9 @@
 // Book Detail Page
 //  Displays detailed information about a book and handles PDF downloads
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+// Use API URL from config.js
+const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
+const MEDIA_BASE_URL = window.API_CONFIG?.MEDIA_BASE_URL || 'http://127.0.0.1:8000';
 
 
 // Check if user is authenticated
@@ -46,10 +48,10 @@ function displayBookDetails(book) {
             imageUrl = book.cover_image;
         } else if (book.cover_image.startsWith('/media/')) {
             // Path already includes /media/ prefix
-            imageUrl = `http://127.0.0.1:8000${book.cover_image}`;
+            imageUrl = `${MEDIA_BASE_URL}${book.cover_image}`;
         } else {
             // Relative path without /media/ prefix
-            imageUrl = `http://127.0.0.1:8000/media/${book.cover_image}`;
+            imageUrl = `${MEDIA_BASE_URL}/media/${book.cover_image}`;
         }
     } else {
         imageUrl = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="600"%3E%3Crect width="400" height="600" fill="%2315b1b1"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" fill="white" font-size="24"%3ENo Image%3C/text%3E%3C/svg%3E';
@@ -62,10 +64,10 @@ function displayBookDetails(book) {
             pdfUrl = book.pdf_file;
         } else if (book.pdf_file.startsWith('/media/')) {
             // Path already includes /media/ prefix
-            pdfUrl = `http://127.0.0.1:8000${book.pdf_file}`;
+            pdfUrl = `${MEDIA_BASE_URL}${book.pdf_file}`;
         } else {
             // Relative path without /media/ prefix
-            pdfUrl = `http://127.0.0.1:8000/media/${book.pdf_file}`;
+            pdfUrl = `${MEDIA_BASE_URL}/media/${book.pdf_file}`;
         }
     }
 

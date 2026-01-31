@@ -1,12 +1,10 @@
 // Homepage - Load books from Django API
-// Use API URL from config.js
-const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
-const MEDIA_BASE_URL = window.API_CONFIG?.MEDIA_BASE_URL || 'http://127.0.0.1:8000';
+// API URLs come from config.js (window.API_CONFIG)
 
 // Fetch and display books on homepage
 async function loadHomepageBooks() {
     try {
-        const response = await fetch(`${API_BASE_URL}/books/`);
+        const response = await fetch(`${window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api'}/books/`);
         
         if (!response.ok) {
             throw new Error('Failed to fetch books');

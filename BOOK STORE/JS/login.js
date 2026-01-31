@@ -1,14 +1,13 @@
 // API Configuration
 // Use API URL from config.js
-const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
 
-// Login form handler
+// Login form handler - API URL comes from config.js
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     
     if (loginForm) {
         loginForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Prevent form from submitting normally
             
             // Get form data
             const email = document.getElementById('loginEmail').value;
@@ -23,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.disabled = true;
                 btnText.textContent = 'Signing In...';
                 spinner.style.display = 'inline-block';
+                
+                // Get API URL from config.js
+                const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
                 
                 // Send login request
                 const response = await fetch(`${API_BASE_URL}/auth/login/`, {

@@ -58,6 +58,7 @@ async function fetchUsers() {
     }
     
     try {
+        const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
         const response = await fetch(`${API_BASE_URL}/auth/users/`, {
             method: 'GET',
             headers: {
@@ -128,6 +129,7 @@ function updateUserStats(users) {
 
 async function fetchBooks() {
     try {
+        const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
         const response = await fetch(`${API_BASE_URL}/books/`);
         
         if (response.ok) {
@@ -192,6 +194,7 @@ function openAddBookModal() {
 
 async function editBook(bookId) {
     try {
+        const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
         const response = await fetch(`${API_BASE_URL}/books/${bookId}/`);
         
         if (response.ok) {
@@ -226,6 +229,7 @@ async function deleteBook(bookId, bookTitle) {
     const token = getAuthToken();
     
     try {
+        const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
         const response = await fetch(`${API_BASE_URL}/books/delete/${bookId}/`, {
             method: 'DELETE',
             headers: {
@@ -321,6 +325,7 @@ async function logout() {
     const token = getAuthToken();
     
     try {
+        const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
         await fetch(`${API_BASE_URL}/auth/logout/`, {
             method: 'POST',
             headers: {

@@ -43,16 +43,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     localStorage.setItem('noveliaUserEmail', data.user.email);
                     localStorage.setItem('noveliaUser', JSON.stringify(data.user));
                     
-                    // Show success message
-                    alert('Login successful! Welcome back.');
+                    console.log('Login successful! User data:', data.user);
+                    console.log('is_superuser:', data.user.is_superuser);
+                    console.log('is_staff:', data.user.is_staff);
                     
                     // Check if user is admin/superuser and redirect accordingly
-                    if (data.user.is_superuser || data.user.is_staff) {
+                    if (data.user.is_superuser === true || data.user.is_staff === true) {
+                        console.log('Redirecting to admin dashboard...');
                         // Redirect to admin dashboard
-                        window.location.href = './admin-dashboard.html';
+                        window.location.href = 'admin-dashboard.html';
                     } else {
+                        console.log('Redirecting to user dashboard...');
                         // Redirect to user dashboard
-                        window.location.href = './user-dashboard.html';
+                        window.location.href = 'user-dashboard.html';
                     }
                 } else {
                     // Show error message

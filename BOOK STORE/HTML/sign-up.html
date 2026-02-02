@@ -79,8 +79,18 @@
                             <input type="email" placeholder="your.email@example.com" required>
                         </div>
                         <div class="mobile-num">
-                            <label for="">Phone Number *</label>
-                            <input type="tel" placeholder="08012345678" required>
+                            <label for="phoneNumber">Phone Number *</label>
+                            <input 
+                                type="tel" 
+                                id="phoneNumber"
+                                placeholder="08012345678" 
+                                pattern="^0[789][01]\d{8}$"
+                                title="Please enter a valid Nigerian phone number (11 digits starting with 08, 07, or 09)"
+                                maxlength="11"
+                                required>
+                            <small class="error-message" id="phoneError" style="display: none; color: #ff4444; font-size: 12px; margin-top: 4px;">
+                                Please enter a valid Nigerian phone number (e.g., 08012345678)
+                            </small>
                         </div>
                         <div class="place">
                             <div class="state">

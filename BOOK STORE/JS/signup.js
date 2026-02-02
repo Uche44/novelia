@@ -13,13 +13,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 first_name: document.querySelector('input[placeholder="John"]').value,
                 last_name: document.querySelector('input[placeholder="Doe"]').value,
                 email: document.querySelector('input[type="email"]').value,
-                phone_number: document.querySelector('input[type="tel"]').value,
+                phone_number: document.getElementById('phoneNumber').value,
                 state: document.getElementById('state').value,
                 city: document.querySelector('.city input').value,
                 password: document.getElementById('password').value,
                 password2: document.getElementById('confirmPassword').value,
                 username: document.querySelector('input[type="email"]').value.split('@')[0] // Use email prefix as username
             };
+            
+            // Validate Nigerian phone number format
+            const phoneRegex = /^0[789][01]\d{8}$/;
+            if (!phoneRegex.test(formData.phone_number)) {
+                document.getElementById('phoneError').style.display = 'block';
+                document.getElementById('phoneNumber').focus();
+                return;
+            } else {
+                document.getElementById('phoneError').style.display = 'none';
+            }
             
             // Validate passwords match
             if (formData.password !== formData.password2) {

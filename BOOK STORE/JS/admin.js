@@ -230,7 +230,7 @@ async function deleteBook(bookId, bookTitle) {
     
     try {
         const API_BASE_URL = window.API_CONFIG?.API_BASE_URL || 'http://127.0.0.1:8000/api';
-        const response = await fetch(`${API_BASE_URL}/books/delete/${bookId}/`, {
+        const response = await fetch(`${API_BASE_URL}/books/${bookId}/delete/`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Token ${token}`

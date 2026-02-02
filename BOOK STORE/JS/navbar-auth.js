@@ -1,4 +1,4 @@
-// Navbar Authentication Handler
+// Navbar Auth Handler
 // Updates navbar to show "Go to Dashboard" when user is logged in
 
 document.addEventListener('DOMContentLoaded', function() {

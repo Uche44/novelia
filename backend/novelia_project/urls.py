@@ -10,6 +10,6 @@ urlpatterns = [
     path('api/books/', include('books.urls')),
 ]
 
-# Serve media files in development
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Serve media files (both development and production)
+# In production, consider using a CDN or cloud storage like AWS S3 or Cloudinary
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -275,6 +275,14 @@ async function submitBookForm(e) {
         formData.append('pdf_file', pdfFile);
     }
     
+    // Get submit button and add loading state
+    const submitBtn = document.getElementById('submitBookBtn');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+    submitBtn.style.opacity = '0.7';
+    submitBtn.style.cursor = 'not-allowed';
+    
     try {
         let url, method;
         
@@ -308,6 +316,12 @@ async function submitBookForm(e) {
     } catch (error) {
         console.error('Error saving book:', error);
         alert('An error occurred while saving the book');
+    } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+        submitBtn.style.opacity = '1';
+        submitBtn.style.cursor = 'pointer';
     }
 }
 

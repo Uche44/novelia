@@ -98,7 +98,7 @@ async function handleDownload(pdfUrl, bookTitle) {
     if (!isAuthenticated()) {
         // Show alert and redirect to signup page
         alert('Please sign up or login to download books');
-        window.location.href = './signup.html';
+        window.location.href = './sign-up.html';
         return;
     }
 

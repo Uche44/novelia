@@ -7,8 +7,14 @@ class Book(models.Model):
     author = models.CharField(max_length=200)
     genre = models.CharField(max_length=100)
     description = models.TextField()
-    cover_image = models.ImageField(upload_to='books/covers/', blank=True, null=True)
-    pdf_file = models.FileField(upload_to='books/pdfs/', blank=True, null=True)
+    
+    # Store Cloudinary URLs instead of files
+    cover_image = models.URLField(max_length=500, blank=True, null=True)
+    cover_image_public_id = models.CharField(max_length=255, blank=True, null=True)
+    
+    pdf_file = models.URLField(max_length=500, blank=True, null=True)
+    pdf_file_public_id = models.CharField(max_length=255, blank=True, null=True)
+    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

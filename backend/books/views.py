@@ -101,3 +101,26 @@ def update_book(request, book_id):
         return Response({
             'error': 'Book not found'
         }, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def download_book(request, book_id):
+    """Download book PDF (authenticated users only)"""
+    try:
+        book = Book.objects.get(id=book_id)
+        if not book.pdf_file:
+            return Response({
+                'error': 'PDF file not available for this book'
+            }, status=status.HTTP_404_NOT_FOUND)
+        
+        # Return the file as response
+        return FileResponse(
+            book.pdf_file.open('rb'),
+            as_attachment=True,
+            filename=f"{book.title}.pdf"
+        )
+    except Book.DoesNotExist:
+        return Response({
+            'error': 'Book not found'
+        }, status=status.HTTP_404_NOT_FOUND)

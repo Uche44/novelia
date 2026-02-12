@@ -11,6 +11,10 @@ class BookSerializer(serializers.ModelSerializer):
 
 class BookCreateSerializer(serializers.ModelSerializer):
     """Serializer for creating/updating books"""
+    # Accept URLs from frontend (Cloudinary CDN URLs)
+    cover_image = serializers.URLField(required=False, allow_blank=True, allow_null=True)
+    pdf_file = serializers.URLField(required=False, allow_blank=True, allow_null=True)
+    
     class Meta:
         model = Book
         fields = ('title', 'author', 'genre', 'description', 'cover_image', 'pdf_file')

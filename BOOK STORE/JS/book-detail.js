@@ -79,7 +79,7 @@ function displayBookDetails(book) {
   // Set up download button
   const downloadBtn = document.getElementById("downloadBtn");
   if (book.pdf_file) {
-    downloadBtn.onclick = () => handleDownload(book.pdf_file, book.title);
+    downloadBtn.onclick = () => handleDownload(book.id, book.title);
   } else {
     downloadBtn.disabled = true;
     downloadBtn.innerHTML = '<i class="fas fa-ban"></i> PDF Not Available';
@@ -92,9 +92,82 @@ function displayBookDetails(book) {
   document.getElementById("bookDetailContent").style.display = "block";
 }
 
-// Handle PDF download - uses Cloudinary fl_attachment to force download
+// Handle PDF download with authentication check (Backend API)
 
-async function handleDownload(pdfUrl, bookTitle) {
+// async function handleDownload(bookId, bookTitle) {
+//   // Check if user is authenticated
+//   if (!isAuthenticated()) {
+//     // Show alert and redirect to signup page
+//     alert("Please sign up or login to download books");
+//     window.location.href = "./sign-up.html";
+//     return;
+//   }
+
+//   // User is authenticated - proceed with download via backend
+//   const downloadBtn = document.getElementById("downloadBtn");
+//   const originalHTML = downloadBtn.innerHTML;
+
+//   try {
+//     // Show loading state
+//     downloadBtn.disabled = true;
+//     downloadBtn.innerHTML =
+//       '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+
+//     const token = localStorage.getItem("noveliaToken");
+
+//     // Fetch the PDF through backend API with authentication
+//     const response = await fetch(`${API_BASE_URL}/books/download/${bookId}/`, {
+//       method: "GET",
+//       headers: {
+//         Authorization: `Token ${token}`,
+//       },
+//     });
+
+//     if (!response.ok) {
+//       if (response.status === 401) {
+//         alert("Your session has expired. Please login again.");
+//         localStorage.clear();
+//         window.location.href = "./login.html";
+//         return;
+//       }
+//       throw new Error("Failed to download file");
+//     }
+
+//     const blob = await response.blob();
+
+//     // Create a blob URL
+//     const blobUrl = window.URL.createObjectURL(blob);
+
+//     // Create a temporary anchor element and trigger download
+//     const link = document.createElement("a");
+//     link.href = blobUrl;
+//     link.download = `${bookTitle}.pdf`;
+
+//     // Append to body, click, and remove
+//     document.body.appendChild(link);
+//     link.click();
+//     document.body.removeChild(link);
+
+//     // Clean up the blob URL
+//     window.URL.revokeObjectURL(blobUrl);
+
+//     // Show success message
+//     downloadBtn.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+//     setTimeout(() => {
+//       downloadBtn.innerHTML = originalHTML;
+//       downloadBtn.disabled = false;
+//     }, 2000);
+//   } catch (error) {
+//     console.error("Download error:", error);
+//     alert("Failed to download the book. Please try again.");
+//     downloadBtn.innerHTML = originalHTML;
+//     downloadBtn.disabled = false;
+//   }
+// }
+
+// Show error message
+
+async function handleDownload(bookId, bookTitle) {
   if (!isAuthenticated()) {
     alert("Please sign up or login to download books");
     window.location.href = "./sign-up.html";
@@ -107,14 +180,49 @@ async function handleDownload(pdfUrl, bookTitle) {
   try {
     downloadBtn.disabled = true;
     downloadBtn.innerHTML =
+      '<i class="fas fa-spinner fa-spin"></i> Getting download link...';
+
+    const token = localStorage.getItem("noveliaToken");
+
+    // Get the Cloudinary download URL from backend
+    const response = await fetch(`${API_BASE_URL}/books/${bookId}/download/`, {
+      method: "GET",
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    });
+
+    if (response.status === 401) {
+      alert("Your session has expired. Please login again.");
+      localStorage.clear();
+      window.location.href = "./login.html";
+      return;
+    }
+
+    if (!response.ok) throw new Error("Failed to get download URL");
+
+    const data = await response.json();
+
+    // Fetch the PDF as a blob from Cloudinary (cross-origin anchor downloads don't work)
+    downloadBtn.innerHTML =
       '<i class="fas fa-spinner fa-spin"></i> Downloading...';
 
-    // Add fl_attachment to the Cloudinary URL to force browser download
-    // Transforms: .../upload/v123/... → .../upload/fl_attachment/v123/...
-    const downloadUrl = pdfUrl.replace("/upload/", "/upload/fl_attachment/");
+    const fileResponse = await fetch(data.download_url);
+    if (!fileResponse.ok) throw new Error("Failed to download file");
 
-    // Open directly — no CORS issues since it's a navigation, not a fetch
-    window.open(downloadUrl, "_blank");
+    const blob = await fileResponse.blob();
+    const blobUrl = window.URL.createObjectURL(blob);
+
+    // Trigger download from blob URL (same-origin, so download attribute works)
+    const link = document.createElement("a");
+    link.href = blobUrl;
+    link.download = `${bookTitle}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Clean up blob URL
+    window.URL.revokeObjectURL(blobUrl);
 
     downloadBtn.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
     setTimeout(() => {

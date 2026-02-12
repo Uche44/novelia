@@ -2,11 +2,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
-from django.http import FileResponse, Http404
-from django.conf import settings
 from .models import Book
 from .serializers import BookSerializer, BookCreateSerializer
-import os
 
 
 @api_view(['GET'])
@@ -114,12 +111,10 @@ def download_book(request, book_id):
                 'error': 'PDF file not available for this book'
             }, status=status.HTTP_404_NOT_FOUND)
         
-        # Return the file as response
-        return FileResponse(
-            book.pdf_file.open('rb'),
-            as_attachment=True,
-            filename=f"{book.title}.pdf"
-        )
+        # Return the Cloudinary URL for the frontend to handle the download
+        return Response({
+            'download_url': book.pdf_file
+        })
     except Book.DoesNotExist:
         return Response({
             'error': 'Book not found'
